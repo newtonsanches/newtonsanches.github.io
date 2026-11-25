@@ -83,12 +83,10 @@ jobs:
           git commit -q -m "Vitrine: $ID $VERSAO"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
 
+  # Monta o site e guarda como pacote ("artifact").
   site:
     needs: catalogo
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -99,5 +97,14 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+
+  # Publica o pacote no GitHub Pages (job separado, como no modelo oficial do GitHub).
+  publicar:
+    needs: site
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
       - id: deploy
         uses: actions/deploy-pages@v4

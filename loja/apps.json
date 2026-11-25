@@ -1,0 +1,176 @@
+{
+  "loja": {
+    "nome": "Vitrine",
+    "subtitulo": "Apps, sites e painéis do Newton",
+    "endereco": ""
+  },
+  "categorias": {
+    "dados": "Dados e painéis",
+    "financas": "Finanças",
+    "produtividade": "Produtividade",
+    "utilidades": "Utilidades",
+    "jogos": "Jogos",
+    "esportes": "Esportes",
+    "saude": "Saúde",
+    "politica": "Política e eleições"
+  },
+  "apps": [
+    {
+      "id": "faxina",
+      "nome": "Faxina",
+      "resumo": "Limpa a memória do celular com segurança: duplicados, lixo, arquivos grandes e velhos, com lixeira de 7 dias.",
+      "descricao": "App de manutenção do celular Android. Analisa o armazenamento e acha duplicados (conteúdo idêntico), lixo, pastas vazias, arquivos grandes e velhos e restos de apps desinstalados. Nada é apagado na hora: tudo vai para uma lixeira e só sai de vez depois do prazo. Tem perfis de limpeza, faxina agendada, uma aba de Segurança com nota de 0 a 100 e uma aba de Apps (tamanho, cache, apps sem uso e permissões). Funciona sem internet. Duas edições: Padrão (recomendada, instala pelo navegador) e Completa (com limpeza automática de cache via Acessibilidade; o Play Protect bloqueia a instalação pelo navegador). Por enquanto os APKs ficam num repositório privado: para baixar, é preciso estar logado no GitHub com a conta do dono.",
+      "categoria": "utilidades",
+      "tipo": "android",
+      "status": "pessoal",
+      "icone": "icones/apps/faxina.svg",
+      "cor": "#1E6B52",
+      "versoes": [
+        {
+          "versao": "1.0.13",
+          "data": "2026-11-25",
+          "notas": [
+            "Risco recalibrado, riscos por tipo e ajuda nas configurações restritas."
+          ],
+          "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.13/faxina-v1.0.13.apk",
+          "outros": [
+            {
+              "nome": "Completa",
+              "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.13/faxina-completo-v1.0.13.apk"
+            }
+          ]
+        },
+        {
+          "versao": "1.0.12",
+          "data": "2026-11-22",
+          "notas": [
+            "Edições Padrão (sem Acessibilidade) e Completa."
+          ],
+          "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.12/faxina-v1.0.12.apk",
+          "outros": [
+            {
+              "nome": "Completa",
+              "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.12/faxina-completo-v1.0.12.apk"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cartoes-corporativos",
+      "nome": "Cartões Corporativos",
+      "resumo": "Gastos do Cartão de Pagamento do Governo Federal, mês a mês, de 2003 a 2026.",
+      "descricao": "Painel com a base consolidada dos gastos com o Cartão de Pagamento do Governo Federal (CPGF), feita a partir dos dados abertos do Portal da Transparência. Mostra a evolução mensal, a comparação entre governos, os valores corrigidos pelo IPCA e as lacunas de cobertura dos dados. O painel roda no claude.ai: para abrir, é preciso estar logado na conta dona do painel ou ele ter sido compartilhado com você.",
+      "categoria": "dados",
+      "tipo": "web",
+      "status": "encerrado",
+      "icone": "icones/apps/cartoes-corporativos.svg",
+      "cor": "#1a73e8",
+      "versoes": [
+        {
+          "versao": "1.0",
+          "data": "2026-11-25",
+          "notas": [
+            "Painel final do levantamento, com base consolidada de 2003 a 2026."
+          ]
+        }
+      ],
+      "acesso": {
+        "web": "https://claude.ai/artifact/4c1bJHYvkviqVfoQ32X5JT"
+      }
+    },
+    {
+      "id": "simulador-brasileirao",
+      "nome": "Simulador do Brasileirão",
+      "resumo": "Chances de título, Libertadores, Sul-Americana e rebaixamento por simulação de Monte Carlo.",
+      "descricao": "Simula o restante do Campeonato Brasileiro milhares de vezes (método de Monte Carlo) e mostra a chance de cada time terminar campeão, na Libertadores, na Sul-Americana ou rebaixado. Mostra também os caminhos: pontos necessários, posição mais provável e onde cada time termina a cada rodada.",
+      "categoria": "esportes",
+      "tipo": "pwa",
+      "status": "estavel",
+      "icone": "icones/apps/simulador-brasileirao.png",
+      "cor": "#0b7a3e",
+      "acesso": {
+        "web": "https://simulador-brasileirao.onrender.com"
+      },
+      "versoes": [
+        {
+          "versao": "2026.11.22",
+          "data": "2026-11-22",
+          "notas": [
+            "Caminhos: pontos, posição mais provável e 'Onde termina' a cada passo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apuracao-ao-vivo",
+      "nome": "Apuração ao Vivo",
+      "resumo": "Resultado das eleições em tempo real, lido direto dos arquivos oficiais do TSE.",
+      "descricao": "Painel da apuração do 2º turno de 25/10/2026 que lê os arquivos oficiais de divulgação do TSE e envia cada atualização ao navegador assim que ela chega. Inclui o site Urna a Urna (em /urnas): mapas do Brasil, dos estados e dos bairros, busca de urna, perfil do eleitor, transferência de votos, abstenção e votos por hora, com dados do TSE e do IBGE.",
+      "categoria": "politica",
+      "tipo": "pwa",
+      "status": "estavel",
+      "icone": "icones/apps/apuracao-ao-vivo.png",
+      "cor": "#0d1117",
+      "acesso": {
+        "web": "https://apuracao-ao-vivo.onrender.com"
+      },
+      "versoes": [
+        {
+          "versao": "2026.11.15",
+          "data": "2026-11-15",
+          "notas": [
+            "Teste do site publicado no Render (só leitura)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bussola-de-valores",
+      "nome": "Bússola de Valores",
+      "resumo": "Descubra onde você está no mapa político em 4 eixos: economia, autoridade, costumes e igualdade.",
+      "descricao": "Questionário com 37 perguntas, em cerca de 8 minutos, sem cadastro e sem coletar nenhum dado: a pontuação é calculada no próprio aparelho. Mostra o quadrante, o mapa com o seu ponto, os 4 eixos com explicação, as correntes mais parecidas e uma imagem pronta para compartilhar. Funciona offline depois da primeira visita.",
+      "categoria": "politica",
+      "tipo": "pwa",
+      "status": "estavel",
+      "icone": "icones/apps/bussola-de-valores.png",
+      "cor": "#6A4CF5",
+      "acesso": {
+        "web": "https://newtonsanches.github.io/bussola-de-valores/"
+      },
+      "codigo": "https://github.com/newtonsanches/bussola-de-valores",
+      "versoes": [
+        {
+          "versao": "1.0.0",
+          "data": "2026-11-15",
+          "notas": [
+            "App de questionário político em 4 eixos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "painel-saude",
+      "nome": "Painel de Saúde",
+      "resumo": "Histórico de exames, agenda e acompanhamentos de saúde.",
+      "descricao": "Painel pessoal com histórico de exames, agenda e acompanhamentos de saúde. Exige login com a conta Google autorizada: outras pessoas não conseguem usar. Uma versão aberta ao público geral, mais genérica, está nos planos.",
+      "categoria": "saude",
+      "tipo": "pwa",
+      "status": "pessoal",
+      "icone": "icones/apps/painel-saude.png",
+      "cor": "#0a1216",
+      "acesso": {
+        "web": "https://painel-saude-newton.web.app"
+      },
+      "versoes": [
+        {
+          "versao": "2026.11.16",
+          "data": "2026-11-16",
+          "notas": [
+            "Dossiê: horário de gravação em Brasília, não UTC."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vitrine</title>
+  <meta name="description" content="Apps, sites e painéis em um só lugar, prontos para abrir ou instalar no celular.">
+  <meta name="theme-color" content="#0b57d0">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icones/icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icones/icone-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Vitrine">
+  <link rel="stylesheet" href="estilo.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="#/">
+      <img src="icones/icone.svg" alt="" width="32" height="32">
+      <span>
+        <strong id="nome-loja">Vitrine</strong>
+        <small id="subtitulo-loja"></small>
+      </span>
+    </a>
+    <button id="instalar-loja" class="botao contorno" hidden>Instalar</button>
+  </header>
+
+  <main id="conteudo" aria-live="polite">
+    <p class="carregando">Carregando…</p>
+  </main>
+
+  <footer class="rodape">
+    <p>Catálogo gerado a partir de <code>apps.json</code>. Atualizado automaticamente a cada nova versão.</p>
+  </footer>
+
+  <div id="aviso" class="aviso" role="status" hidden></div>
+</body>
+</html>

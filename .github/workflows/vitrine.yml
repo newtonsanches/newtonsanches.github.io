@@ -1,0 +1,103 @@
+name: Vitrine - publicar
+
+# Publica a Vitrine (loja/) no GitHub Pages: https://newtonsanches.github.io
+# Roda em três situações:
+#  1. push no main (alguém mudou a loja);
+#  2. disparo manual em Actions > "Vitrine - publicar" > Run workflow (opcionalmente com uma versão nova);
+#  3. aviso de outro repositório (repository_dispatch "nova-versao"), enviado pelo build de um app.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      id:      { description: "id do app (deixe vazio para só republicar)", required: false }
+      versao:  { description: "versão nova (ex.: 1.3.0)", required: false }
+      notas:   { description: "novidades, separadas por |", required: false }
+      apk:     { description: "link do APK", required: false }
+      outros:  { description: "outras edições: Nome=link|Nome2=link", required: false }
+      tamanho: { description: 'tamanho, ex.: "8,4 MB"', required: false }
+      web:     { description: "link para abrir no navegador", required: false }
+      nome:    { description: "só app novo: nome", required: false }
+      tipo:    { description: "só app novo: web, pwa ou android", required: false }
+      resumo:  { description: "só app novo: uma frase", required: false }
+  repository_dispatch:
+    types: [nova-versao]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: vitrine
+  cancel-in-progress: false
+
+jobs:
+  catalogo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Registrar versão nova no catálogo
+        env:
+          ID:        ${{ inputs.id      || github.event.client_payload.id }}
+          VERSAO:    ${{ inputs.versao  || github.event.client_payload.versao }}
+          NOTAS:     ${{ inputs.notas   || github.event.client_payload.notas }}
+          APK:       ${{ inputs.apk     || github.event.client_payload.apk }}
+          OUTROS:    ${{ inputs.outros  || github.event.client_payload.outros }}
+          TAMANHO:   ${{ inputs.tamanho || github.event.client_payload.tamanho }}
+          WEB:       ${{ inputs.web     || github.event.client_payload.web }}
+          NOME:      ${{ inputs.nome    || github.event.client_payload.novo.nome }}
+          TIPO:      ${{ inputs.tipo    || github.event.client_payload.novo.tipo }}
+          RESUMO:    ${{ inputs.resumo  || github.event.client_payload.novo.resumo }}
+          CATEGORIA: ${{ github.event.client_payload.novo.categoria }}
+        run: |
+          if [ -z "$ID" ]; then
+            echo "Sem versão nova: só valida e republica."
+            python3 loja/publicar.py --validar
+            exit 0
+          fi
+          args=(--id "$ID" --versao "$VERSAO")
+          [ -n "$APK" ]     && args+=(--apk "$APK")
+          [ -n "$TAMANHO" ] && args+=(--tamanho "$TAMANHO")
+          [ -n "$WEB" ]     && args+=(--web "$WEB")
+          if [ -n "$NOME" ]; then
+            args+=(--novo --nome "$NOME" --tipo "$TIPO" --resumo "$RESUMO")
+            [ -n "$CATEGORIA" ] && args+=(--categoria "$CATEGORIA")
+          fi
+          IFS='|' read -ra lista <<< "$NOTAS"
+          for n in "${lista[@]}"; do
+            n="$(echo "$n" | xargs)"; [ -n "$n" ] && args+=(--nota "$n")
+          done
+          IFS='|' read -ra lista <<< "$OUTROS"
+          for o in "${lista[@]}"; do
+            o="$(echo "$o" | xargs)"; [ -n "$o" ] && args+=(--outro "$o")
+          done
+          python3 loja/publicar.py "${args[@]}"
+
+          git config user.name "vitrine"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add loja/apps.json
+          git diff --cached --quiet && { echo "catálogo sem mudanças"; exit 0; }
+          git commit -q -m "Vitrine: $ID $VERSAO"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+
+  site:
+    needs: catalogo
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Montar o site
+        run: python3 loja/montar.py _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -14,7 +14,7 @@ build do app ──► cria o APK (ou publica o site)
                 │
                 ▼
      workflow "Vitrine - publicar" (repositório newtonsanches.github.io)
-       1. publicar.py grava a versão em loja/apps.json
+       1. publicar.py grava a versão em apps.json
        2. montar.py monta o site
        3. publica no GitHub Pages ──► página atualizada
 ```
@@ -28,7 +28,7 @@ Tudo o que a página mostra vem de um único arquivo: **`apps.json`**. Ninguém 
 | `manifest.webmanifest`, `sw.js`, `icones/` | Permitem instalar a Vitrine no celular e abri-la offline |
 | `publicar.py` | Registra uma versão nova no catálogo (é o que os compiladores chamam) |
 | `montar.py` | Monta o site final em `_site/` |
-| `../.github/workflows/vitrine.yml` | Automação: grava a versão, monta e publica |
+| `.github/workflows/vitrine.yml` | Automação: grava a versão, monta e publica |
 
 ## Onde está no ar
 
@@ -48,15 +48,15 @@ Cada push no `main` republica o site sozinho.
 ### A. À mão, no computador
 
 ```bash
-python3 loja/publicar.py --id meu-app --versao 1.3.0 \
+python3 publicar.py --id meu-app --versao 1.3.0 \
   --apk https://github.com/newtonsanches/meu-app/releases/download/v1.3.0/meu-app.apk \
   --tamanho "8,4 MB" --nota "Corrige o login" --nota "Tela de ajustes nova"
-git add loja/apps.json && git commit -m "Vitrine: meu-app 1.3.0" && git push   # no main
+git add apps.json && git commit -m "Vitrine: meu-app 1.3.0" && git push   # no main
 ```
 
 App que ainda não está na loja: acrescente `--novo --nome "Meu App" --tipo android --resumo "Uma frase" --categoria utilidades`.
 O script recusa erros comuns (versão repetida, APK faltando, categoria inexistente) e, nesses casos, não grava nada.
-Para só conferir o catálogo: `python3 loja/publicar.py --validar`.
+Para só conferir o catálogo: `python3 publicar.py --validar`.
 
 ### B. Pelo site do GitHub
 
@@ -96,7 +96,7 @@ Campos aceitos em `client_payload`: `id`, `versao`, `notas` (separadas por `|`),
   "categoria": "utilidades",               // uma das chaves de "categorias"
   "tipo": "android",                       // android | pwa | web
   "status": "beta",                        // estavel | beta | encerrado | pessoal (opcional)
-  "icone": "icones/apps/meu-app.svg",      // caminho dentro de loja/ ou URL
+  "icone": "icones/apps/meu-app.svg",      // caminho dentro do repositório ou URL
   "acesso": { "web": "https://..." },      // opcional
   "pasta": "meu-site",                     // opcional: pasta deste repositório para hospedar
   "codigo": "https://github.com/...",      // opcional: botão Código-fonte
@@ -113,7 +113,7 @@ Um app ganha o selo **Atualizado** durante 14 dias após a última versão.
 ## Ver no computador antes de publicar
 
 ```bash
-python3 loja/montar.py _site && python3 -m http.server -d _site 8000
+python3 -m http.server 8000   # na raiz do repositório
 # abra http://localhost:8000
 ```
 

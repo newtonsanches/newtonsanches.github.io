@@ -1,6 +1,6 @@
 name: Vitrine - publicar
 
-# Publica a Vitrine (loja/) no GitHub Pages: https://newtonsanches.github.io
+# Publica a Vitrine (arquivos da raiz) no GitHub Pages: https://newtonsanches.github.io
 # Roda em três situações:
 #  1. push no main (alguém mudou a loja);
 #  2. disparo manual em Actions > "Vitrine - publicar" > Run workflow (opcionalmente com uma versão nova);
@@ -55,7 +55,7 @@ jobs:
         run: |
           if [ -z "$ID" ]; then
             echo "Sem versão nova: só valida e republica."
-            python3 loja/publicar.py --validar
+            python3 publicar.py --validar
             exit 0
           fi
           args=(--id "$ID" --versao "$VERSAO")
@@ -74,11 +74,11 @@ jobs:
           for o in "${lista[@]}"; do
             o="$(echo "$o" | xargs)"; [ -n "$o" ] && args+=(--outro "$o")
           done
-          python3 loja/publicar.py "${args[@]}"
+          python3 publicar.py "${args[@]}"
 
           git config user.name "vitrine"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add loja/apps.json
+          git add apps.json
           git diff --cached --quiet && { echo "catálogo sem mudanças"; exit 0; }
           git commit -q -m "Vitrine: $ID $VERSAO"
           for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
@@ -92,7 +92,7 @@ jobs:
         with:
           ref: main
       - name: Montar o site
-        run: python3 loja/montar.py _site
+        run: python3 montar.py _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Registra uma versão nova de um app no catálogo da Vitrine (loja/apps.json).
+"""Registra uma versão nova de um app no catálogo da Vitrine (apps.json).
 
 É o script que os compiladores (workflows de build) chamam ao gerar uma versão nova.
 Só usa a biblioteca padrão do Python.
@@ -7,18 +7,18 @@ Só usa a biblioteca padrão do Python.
 Exemplos
 --------
 Versão nova de um app que já está na loja:
-    python3 loja/publicar.py --id meu-app --versao 1.3.0 \\
+    python3 publicar.py --id meu-app --versao 1.3.0 \\
         --apk https://github.com/usuario/meu-app/releases/download/v1.3.0/meu-app.apk \\
         --tamanho "8,4 MB" --nota "Corrige o login" --nota "Tela de ajustes nova" \\
         --outro "Completa=https://github.com/usuario/meu-app/releases/download/v1.3.0/meu-app-completo.apk"
 
 App novo (primeira publicação):
-    python3 loja/publicar.py --id meu-app --versao 1.0.0 --novo \\
+    python3 publicar.py --id meu-app --versao 1.0.0 --novo \\
         --nome "Meu App" --tipo android --categoria utilidades \\
         --resumo "Uma frase sobre o app" --apk https://.../meu-app.apk
 
 Só conferir se o catálogo está válido:
-    python3 loja/publicar.py --validar
+    python3 publicar.py --validar
 """
 import argparse
 import datetime as dt
@@ -107,12 +107,12 @@ def principal():
     novo.add_argument("--resumo")
     novo.add_argument("--descricao")
     novo.add_argument("--categoria")
-    novo.add_argument("--icone", help="caminho relativo à pasta loja/ ou URL")
+    novo.add_argument("--icone", help="caminho dentro do repositório ou URL")
     novo.add_argument("--status", choices=sorted(STATUS))
     a = p.parse_args()
 
     cat = ler()
-    raiz = PASTA.parent
+    raiz = PASTA
 
     if a.validar:
         erros = validar(cat, raiz)

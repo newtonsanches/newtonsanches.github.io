@@ -5,7 +5,7 @@
 - Para cada app com o campo "pasta", copia essa pasta do repositório para apps/<id>/,
   assim sites e painéis guardados aqui ficam hospedados junto com a loja.
 
-Uso:  python3 loja/montar.py [_site]
+Uso:  python3 montar.py [_site]
 """
 import json
 import pathlib
@@ -15,8 +15,8 @@ import sys
 from publicar import validar
 
 LOJA = pathlib.Path(__file__).resolve().parent
-RAIZ = LOJA.parent
-IGNORAR = shutil.ignore_patterns("*.py", "__pycache__", "README.md")
+RAIZ = LOJA
+IGNORAR = shutil.ignore_patterns("*.py", "__pycache__", "*.md", ".git", ".github", ".gitignore", "_site")
 
 
 def main():

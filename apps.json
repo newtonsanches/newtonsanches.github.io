@@ -112,6 +112,29 @@
           ]
         }
       ]
+    },
+    {
+      "id": "saude-publico",
+      "nome": "Painel de Saúde",
+      "resumo": "Organize seus exames com a sua conta Google, importe o PDF do laudo conferindo cada valor e acompanhe a evolução, com dados que só você vê.",
+      "descricao": "App instalável para organizar exames de saúde. Entre com a sua conta Google, crie categorias, lance resultados à mão ou importe o PDF do laudo: o arquivo é lido no próprio aparelho e cada valor só é salvo depois que você confere. Gráficos mostram a evolução de cada exame com a faixa de referência do seu laudo. Cada pessoa vê só os próprios dados; dá para exportar tudo ou apagar a conta quando quiser. Sem anúncios e sem rastreadores. Não substitui o médico.",
+      "categoria": "saude",
+      "tipo": "pwa",
+      "status": "estavel",
+      "icone": "icones/apps/saude-publico.png",
+      "versoes": [
+        {
+          "versao": "2026.11.26",
+          "data": "2026-11-26",
+          "notas": [
+            "Primeira versão pública"
+          ]
+        }
+      ],
+      "acesso": {
+        "web": "https://painel-saude-publico.web.app/"
+      },
+      "cor": "#0F766E"
     }
   ]
 }

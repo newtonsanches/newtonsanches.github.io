@@ -72,29 +72,6 @@
       ]
     },
     {
-      "id": "cartoes-corporativos",
-      "nome": "Cartões Corporativos",
-      "resumo": "Gastos do Cartão de Pagamento do Governo Federal, mês a mês, de 2003 a 2026.",
-      "descricao": "Painel com a base consolidada dos gastos com o Cartão de Pagamento do Governo Federal (CPGF), feita a partir dos dados abertos do Portal da Transparência. Mostra a evolução mensal, a comparação entre governos, os valores corrigidos pelo IPCA e as lacunas de cobertura dos dados. O painel roda no claude.ai: para abrir, é preciso estar logado na conta dona do painel ou ele ter sido compartilhado com você.",
-      "categoria": "dados",
-      "tipo": "web",
-      "status": "encerrado",
-      "icone": "icones/apps/cartoes-corporativos.svg",
-      "cor": "#1a73e8",
-      "versoes": [
-        {
-          "versao": "1.0",
-          "data": "2026-11-25",
-          "notas": [
-            "Painel final do levantamento, com base consolidada de 2003 a 2026."
-          ]
-        }
-      ],
-      "acesso": {
-        "web": "https://claude.ai/artifact/4c1bJHYvkviqVfoQ32X5JT"
-      }
-    },
-    {
       "id": "simulador-brasileirao",
       "nome": "Simulador do Brasileirão",
       "resumo": "Chances de título, Libertadores, Sul-Americana e rebaixamento por simulação de Monte Carlo.",
@@ -160,29 +137,6 @@
           "data": "2026-11-15",
           "notas": [
             "App de questionário político em 4 eixos."
-          ]
-        }
-      ]
-    },
-    {
-      "id": "painel-saude",
-      "nome": "Painel de Saúde",
-      "resumo": "Histórico de exames, agenda e acompanhamentos de saúde.",
-      "descricao": "Painel pessoal com histórico de exames, agenda e acompanhamentos de saúde. Exige login com a conta Google autorizada: outras pessoas não conseguem usar. Uma versão aberta ao público geral, mais genérica, está nos planos.",
-      "categoria": "saude",
-      "tipo": "pwa",
-      "status": "pessoal",
-      "icone": "icones/apps/painel-saude.png",
-      "cor": "#0a1216",
-      "acesso": {
-        "web": "https://painel-saude-newton.web.app"
-      },
-      "versoes": [
-        {
-          "versao": "2026.11.16",
-          "data": "2026-11-16",
-          "notas": [
-            "Dossiê: horário de gravação em Brasília, não UTC."
           ]
         }
       ]

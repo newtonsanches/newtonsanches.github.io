@@ -100,6 +100,8 @@ def principal():
     p.add_argument("--tamanho", help='tamanho do arquivo, ex.: "8,4 MB"')
     p.add_argument("--web", help="link para abrir o app no navegador")
     p.add_argument("--substituir", action="store_true", help="sobrescreve se a versão já existir")
+    p.add_argument("--juntar", action="store_true",
+                   help="se a versão já existir, junta as novidades (útil para sites: uma versão por dia)")
     novo = p.add_argument_group("app novo (use com --novo)")
     novo.add_argument("--novo", action="store_true", help="cadastra o app se ainda não existir")
     novo.add_argument("--nome")
@@ -163,7 +165,13 @@ def principal():
         versao["outros"] = outros
 
     existentes = [v for v in app["versoes"] if v.get("versao") == a.versao]
-    if existentes and not a.substituir:
+    if existentes and a.juntar and not a.substituir:
+        antiga = existentes[0]
+        versao["notas"] = notas + [n for n in antiga.get("notas", []) if n not in notas]
+        for campo in ("apk", "tamanho", "outros"):
+            if campo not in versao and campo in antiga:
+                versao[campo] = antiga[campo]
+    elif existentes and not a.substituir:
         print(f"A versão {a.versao} de '{a.id}' já está publicada. Use --substituir para sobrescrever.")
         return 1
     app["versoes"] = [versao] + [v for v in app["versoes"] if v.get("versao") != a.versao]

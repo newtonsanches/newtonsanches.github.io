@@ -58,7 +58,7 @@ jobs:
             python3 publicar.py --validar
             exit 0
           fi
-          args=(--id "$ID" --versao "$VERSAO")
+          args=(--id "$ID" --versao "$VERSAO" --juntar)
           [ -n "$APK" ]     && args+=(--apk "$APK")
           [ -n "$TAMANHO" ] && args+=(--tamanho "$TAMANHO")
           [ -n "$WEB" ]     && args+=(--web "$WEB")

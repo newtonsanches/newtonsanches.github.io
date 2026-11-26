@@ -147,7 +147,8 @@ def principal():
     if a.web:
         app.setdefault("acesso", {})["web"] = a.web
 
-    versao = {"versao": a.versao, "data": a.data, "notas": a.nota}
+    notas = [n.strip()[:1].upper() + n.strip()[1:] for n in a.nota if n.strip()]
+    versao = {"versao": a.versao, "data": a.data, "notas": notas}
     if a.apk:
         versao["apk"] = a.apk
     if a.tamanho:

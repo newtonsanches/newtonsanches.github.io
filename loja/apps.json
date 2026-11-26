@@ -27,6 +27,21 @@
       "cor": "#1E6B52",
       "versoes": [
         {
+          "versao": "1.0.14",
+          "data": "2026-11-26",
+          "notas": [
+            "publicação automática na Vitrine"
+          ],
+          "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.14/faxina-v1.0.14.apk",
+          "tamanho": "20 MB",
+          "outros": [
+            {
+              "nome": "Completa",
+              "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.14/faxina-completo-v1.0.14.apk"
+            }
+          ]
+        },
+        {
           "versao": "1.0.13",
           "data": "2026-11-25",
           "notas": [

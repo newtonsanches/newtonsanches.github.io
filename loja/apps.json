@@ -19,10 +19,10 @@
       "id": "faxina",
       "nome": "Faxina",
       "resumo": "Limpa a memória do celular com segurança: duplicados, lixo, arquivos grandes e velhos, com lixeira de 7 dias.",
-      "descricao": "App de manutenção do celular Android. Analisa o armazenamento e acha duplicados (conteúdo idêntico), lixo, pastas vazias, arquivos grandes e velhos e restos de apps desinstalados. Nada é apagado na hora: tudo vai para uma lixeira e só sai de vez depois do prazo. Tem perfis de limpeza, faxina agendada, uma aba de Segurança com nota de 0 a 100 e uma aba de Apps (tamanho, cache, apps sem uso e permissões). Funciona sem internet. Duas edições: Padrão (recomendada, instala pelo navegador) e Completa (com limpeza automática de cache via Acessibilidade; o Play Protect bloqueia a instalação pelo navegador). Por enquanto os APKs ficam num repositório privado: para baixar, é preciso estar logado no GitHub com a conta do dono.",
+      "descricao": "App de manutenção do celular Android. Analisa o armazenamento e acha duplicados (conteúdo idêntico), lixo, pastas vazias, arquivos grandes e velhos e restos de apps desinstalados. Nada é apagado na hora: tudo vai para uma lixeira e só sai de vez depois do prazo. Tem perfis de limpeza, faxina agendada, uma aba de Segurança com nota de 0 a 100 e uma aba de Apps (tamanho, cache, apps sem uso e permissões). Funciona sem internet. Duas edições: Padrão (recomendada, instala pelo navegador) e Completa (com limpeza automática de cache via Acessibilidade; o Play Protect bloqueia a instalação pelo navegador).",
       "categoria": "utilidades",
       "tipo": "android",
-      "status": "pessoal",
+      "status": "estavel",
       "icone": "icones/apps/faxina.svg",
       "cor": "#1E6B52",
       "versoes": [
@@ -38,49 +38,6 @@
             {
               "nome": "Completa",
               "apk": "https://github.com/newtonsanches/newtonsanches.github.io/releases/download/faxina-v1.0.15/faxina-completo-v1.0.15.apk"
-            }
-          ]
-        },
-        {
-          "versao": "1.0.14",
-          "data": "2026-11-26",
-          "notas": [
-            "Publicação automática na Vitrine"
-          ],
-          "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.14/faxina-v1.0.14.apk",
-          "tamanho": "20 MB",
-          "outros": [
-            {
-              "nome": "Completa",
-              "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.14/faxina-completo-v1.0.14.apk"
-            }
-          ]
-        },
-        {
-          "versao": "1.0.13",
-          "data": "2026-11-25",
-          "notas": [
-            "Risco recalibrado, riscos por tipo e ajuda nas configurações restritas."
-          ],
-          "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.13/faxina-v1.0.13.apk",
-          "outros": [
-            {
-              "nome": "Completa",
-              "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.13/faxina-completo-v1.0.13.apk"
-            }
-          ]
-        },
-        {
-          "versao": "1.0.12",
-          "data": "2026-11-22",
-          "notas": [
-            "Edições Padrão (sem Acessibilidade) e Completa."
-          ],
-          "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.12/faxina-v1.0.12.apk",
-          "outros": [
-            {
-              "nome": "Completa",
-              "apk": "https://github.com/newtonsanches/rascunhos/releases/download/faxina-v1.0.12/faxina-completo-v1.0.12.apk"
             }
           ]
         }
